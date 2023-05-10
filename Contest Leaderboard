@@ -1,0 +1,11 @@
+SELECT C.hacker_id, C.name, SUM(SC) AS TSC 
+FROM Hackers AS C
+JOIN
+(SELECT hacker_id, challenge_id, MAX(score) AS SC
+FROM Submissions
+GROUP BY hacker_id, challenge_id
+) AS T1
+ON C.hacker_id = T1.hacker_id
+GROUP BY C.hacker_id, C.name
+HAVING TSC > 0
+ORDER BY TSC DESC, C.hacker_id
