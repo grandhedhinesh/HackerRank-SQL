@@ -5,3 +5,4 @@ WHILE @var > 0                 -- condition
    PRINT replicate('* ', @var)    -- Print 
    SET @var = @var - 1            -- decrement 
   END
+
